@@ -81,9 +81,10 @@ public class ProductRepository {
      *       แล้วใช้ Mono.empty() คืนค่า (Mono<Void>)
      */
     public Mono<Void> deleteById(String id) {
-        // TODO: เติม code ตรงนี้
-        return null; // ← แก้บรรทัดนี้
+        store.remove(id);
+        return Mono.empty();
     }
+
 
     // ── 5. กรองตาม category ──────────────────────────────
     /**
@@ -93,7 +94,7 @@ public class ProductRepository {
      *       .filter(p -> p.getCategory().equalsIgnoreCase(category))
      */
     public Flux<Product> findByCategory(String category) {
-        // TODO: เติม code ตรงนี้
-        return null; // ← แก้บรรทัดนี้
+        return findAll()
+                .filter(p -> p.getCategory().equalsIgnoreCase(category));
     }
 }
